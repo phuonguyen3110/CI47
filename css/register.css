@@ -24,8 +24,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .form-action{
     align-items: center;
+}
+
+.name-wrapper .input-wrapper {
+    width: 48%;
 }
