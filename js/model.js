@@ -1,5 +1,7 @@
 const model={}
 model.currentUser=undefined 
+model.conversations = []
+model.currentConversation = undefined
 model.register= async (data)=>{
     try{
         const response=await firebase.auth()
@@ -32,6 +34,17 @@ model.login= async ({email,password})=>{
     // }
     } catch(err) {
         alert(err.message)
-        console.log(err)
+        //console.log(err)
     }
 }
+
+model.getConversations = async () =>{
+    const response = await firebase.firestore().collection('conversations').where('users','array-contains',model.currentUser.email).get()
+    model.conversations = getManyDocuments(response)
+    if(model.conversations.length>0){
+        model.currentConversation=model.conversations[0]
+        view.showCurrentConversation()
+    }
+    
+}
+

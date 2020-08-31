@@ -37,6 +37,7 @@ view.setActiveScreen = (screenName) => {
     break;
     case 'chatPage':
         document.getElementById("app").innerHTML=component.chatPage
+        model.getConversations()
         // document.getElementById("welcome-user").innerHTML='Welcome '+ model.currentUser.displayName
         const sendMessageForm = document.getElementById('send-message-form')
         sendMessageForm.addEventListener('submit',(e)=>{
@@ -50,9 +51,10 @@ view.setActiveScreen = (screenName) => {
                 content:sendMessageForm.message.value,
                 owner: 'Bot'
             }
-            if(message.content){
+            if(message.content.trim()!=''){
             view.addMessage(message)
             view.addMessage(messageFromBot)
+            sendMessageForm.message.value = ''
             }
         })
         break;
@@ -78,6 +80,13 @@ view.addMessage=(message)=>{
         <div class="content">${message.content}</div>
         `
     }
-    console.log(messageWrapper)
+    //console.log(messageWrapper)
     document.querySelector('.list-message').appendChild(messageWrapper)
+}
+
+view.showCurrentConversation= ()=>{
+    for(message of model.currentConversation.messages){
+        console.log(message)
+        view.addMessage(message)
+    }
 }

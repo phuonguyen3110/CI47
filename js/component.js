@@ -72,7 +72,7 @@ component.chatPage=`
         </div>
         <form id="send-message-form">
             <div class="input-wrapper">
-                <input type="text" placeholder="Type a message" name="message"></input>
+                <input type="text" placeholder="Type a message" name="message" autocomplete="off"></input>
             </div>
             <button type="submit"><i class="fa fa-paper-plane"></i></button>
         </form>

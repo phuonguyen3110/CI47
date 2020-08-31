@@ -27,6 +27,7 @@
 
 .chat-container .list-message{
     flex-grow: 1;
+    overflow-y: auto;
 }
 
 .chat-container #send-message-form{
@@ -40,7 +41,8 @@
     border: none;
     background: none;
     color: #007cfd;
-    font-size: 20px;
+    font-size: 1.5rem;
+    outline: none;
 }
 
 #send-message-form .input-wrapper{
@@ -60,6 +62,7 @@
     border-radius: 4px;
     padding: 4px 8px;
     max-width: 45%;
+    word-break: break-all;
 }
 
 .list-message .message.mine .content{
