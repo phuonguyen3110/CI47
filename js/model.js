@@ -55,9 +55,19 @@ model.addMessage=(message)=>{
 }
 
 model.listenConversationChange=()=>{
+    let isFirstRun=true
     firebase.firestore().collection('conversations').where('users','array-contains', model.currentUser.email).onSnapshot((snapshot)=>{
+        if(isFirstRun){
+            isFirstRun=false
+            return
+        }
         for (oneChange of snapshot.docChanges()){
-        console.log(getOneDocument(oneChange.doc))
+            const docData=getOneDocument(oneChange.doc)
+            if(docData.id===model.currentConversation.id){
+                model.currentConversation=docData
+                view.addMessage(model.currentConversation.messages[model.currentConversation.messages.length - 1])
+                view.scrollToEndElement()
+            }
         }
     })
 }

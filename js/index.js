@@ -25,7 +25,7 @@ window.onload = () => {
                 firebase.auth().signOut()
                 view.setActiveScreen('loginPage')
             }
-            view.setActiveScreen('chatPage')
+            //view.setActiveScreen('chatPage')
         } else {
             view.setActiveScreen('registerPage')
         }

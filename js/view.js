@@ -37,7 +37,7 @@ view.setActiveScreen = (screenName) => {
             break;
         case 'chatPage':
             document.getElementById("app").innerHTML = component.chatPage
-            model.getConversations()
+            //model.getConversations()
             // document.getElementById("welcome-user").innerHTML='Welcome '+ model.currentUser.displayName
             const sendMessageForm = document.getElementById('send-message-form')
             sendMessageForm.addEventListener('submit', (e) => {
@@ -45,7 +45,8 @@ view.setActiveScreen = (screenName) => {
                 //console.log(sendMessageForm.message.value)
                 const message = {
                     content: sendMessageForm.message.value,
-                    owner: model.currentUser.email
+                    owner: model.currentUser.email,
+                    createdAt: new Date().toISOString()
                 }
 
                 if (message.content.trim() != '') {
@@ -80,6 +81,7 @@ view.setActiveScreen = (screenName) => {
         }
         //console.log(messageWrapper)
         document.querySelector('.list-message').appendChild(messageWrapper)
+        view.scrollToEndElement()
     }
 
     view.showCurrentConversation = () => {
@@ -87,5 +89,11 @@ view.setActiveScreen = (screenName) => {
             //console.log(message)
             view.addMessage(message)
         }
+        view.scrollToEndElement()
     }
+}
+
+view.scrollToEndElement=()=>{
+    const element=document.querySelector('.list-message')
+    element.scrollTop=element.scrollHeight
 }
