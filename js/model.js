@@ -44,7 +44,20 @@ model.getConversations = async () =>{
     if(model.conversations.length>0){
         model.currentConversation=model.conversations[0]
         view.showCurrentConversation()
-    }
-    
+    }   
 }
 
+model.addMessage=(message)=>{
+    dataToUpdate = {
+        messages: firebase.firestore.FieldValue.arrayUnion(message)
+    }
+ firebase.firestore().collection('conversations').doc(model.currentConversation.id).update(dataToUpdate)   
+}
+
+model.listenConversationChange=()=>{
+    firebase.firestore().collection('conversations').where('users','array-contains', model.currentUser.email).onSnapshot((snapshot)=>{
+        for (oneChange of snapshot.docChanges()){
+        console.log(getOneDocument(oneChange.doc))
+        }
+    })
+}
