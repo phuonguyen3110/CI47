@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/chat.css">
-    <link rel="stylesheet" href="../css/">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="./css/register.css">
 </head>
 <body>
     <!-- <div class="login-container">
@@ -34,31 +34,101 @@
             MindX Chat
         </div>
         <div class="main">
+        <div class="aside-left">
+        <div class="create-conversation">
+            <button class="btn cursor-pointer" id="create-conversation"> + New conversation </button>
+        </div>
+        <div class="list-conversations">
+            <div class="conversation current cursor-pointer">
+                <div class="left-conversation-title">First Conversation</div>
+                <div class="num-of-user">10 users</div>
+            </div>
+        
+            <div class="conversation cursor-pointer">
+                <div class="left-conversation-title">Second Conversation</div>
+                <div class="num-of-user">5 users</div>
+            </div> 
+        
+            <div class="conversation cursor-pointer">
+                <div class="left-conversation-title">Third Conversation</div>
+                <div class="num-of-user">2 users</div>
+            </div>
+        </div>
+        </div>
             <div class="conversation-detail">
                 <div class="conversation-title">First conversation</div>
                 <div class="list-message">
-                    <div class="message mine">
-                        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellat fugiat nisi ad maiores quibusdam nemo id officiis! Animi nesciunt incidunt cum deleniti reprehenderit nihil ab perferendis nulla ducimus culpa.</div>
-                    </div>
-                    <div class="message mine">
-                        <div class="content">Hi</div>
-                    </div>
-
-                    <div class="message their">
-                        <div class="owner">abc@gmail.com</div>
-                        <div class="content">Hello world</div>
-                    </div>
-
+                   
+        
                 </div>
                 <form id="send-message-form">
                     <div class="input-wrapper">
-                        <input type="text" placeholder="Type a message" name="message"></input>
+                        <input type="text" placeholder="Type a message" name="message" autocomplete="off"></input>
                     </div>
-                    <button type="submit">Send</button>
+                    <button type="submit"><i class="fa fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
-    </div> -->
+        </div> -->
+
+        <!-- <div class="create-conversation-wrapper">
+            <div class="header">MindX Chat</div>
+            
+            <form id="create-conversation-form" style="width:60%;margin:auto;margin-top: 20px;">
+                <h4>Create a new conversation</h4>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Conversation title" name="title" style="border: 1px solid #dbdbdb;">
+                    <div class="error" id="create-conversation-title-error"></div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Friend email" name="email" style="border: 1px solid #dbdbdb;">
+                    <div class="error" id="create-conversation-email-error"></div>
+                </div>
+                <button class="btn">Save</button>
+                <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancel</button>
+            </form>
+        </div> -->
+
+        <!-- <div class="chat-container">
+            <div class="header">
+                MindX Chat
+            </div>
+            <div class="main">
+            <div class="aside-left">
+            <div class="create-conversation">
+                <button class="btn cursor-pointer" id="create-conversation"> + New conversation </button>
+            </div>
+            <div class="list-conversations">
+            </div>
+            </div>
+                <div class="conversation-detail">
+                    <div class="conversation-title">First conversation</div>
+                    <div class="list-message">
+                       
+            
+                    </div>
+                    <form id="send-message-form">
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="Type a message" name="message" autocomplete="off"></input>
+                        </div>
+                        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            <div class='aside-right'>
+                <div class="list-user">
+                    <div class="user-email" title="abc@gmail.com">abc@gmail.com</div>
+                    <div class="user-email" title="123@gmail.com">123@gmail.com</div>
+                </div>
+                <form  class="mt-1" id="add-user-form">
+                    <div class="input-wrapper">
+                        <input type="text" name="email" placeholder="Friend email">
+                        <div class="error" id="email-error"></div>
+                    </div>
+                </form>
+                <button class="btn">Add</button>
+            </div>    
+            </div>
+            </div> -->
 
     <script src="./controller.js"></script>
     <script src="./component.js"></script>
