@@ -58,7 +58,9 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
             document.getElementById('create-conversation').addEventListener('click', () => {
                 view.setActiveScreen('createConversationPage')
             })
-
+            document.querySelector('#send-message-form input').addEventListener('click',()=>{
+                view.hideNotification(model.currentConversation.id)
+            })
             if (fromCreateConversation) {
                 view.showCurrentConversation()
                 view.showConversations()
@@ -71,6 +73,8 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
                 e.preventDefault()
                 const data = addUser.email.value
                 controller.addUser(data)
+                addUser.email.value=''
+
             })
             break;
         case 'createConversationPage':
@@ -143,18 +147,36 @@ view.addConversation = (conversation) => {
     const conversationWrapper = document.createElement('div')
     conversationWrapper.classList.add('conversation')
     conversationWrapper.classList.add('cursor-pointer')
+    conversationWrapper.id=conversation.id
     if (conversation.id === model.currentConversation.id) {
         conversationWrapper.classList.add('current')
     }
     conversationWrapper.innerHTML = `
     <div class="left-conversation-title">${conversation.title}</div>
     <div class="num-of-user">${conversation.users.length} users</div>
+    <div class="notification"></div>
     `
+    const mediaQuery=window.matchMedia('(max-width: 786px)')
+    if(mediaQuery.matches){
+        conversationWrapper.firstElementChild.innerText=conversation.title.charAt(0).toUpperCase()
+        document.getElementById('create-conversation').innerText='+'
+    }
+    mediaQuery.addListener((e)=>{
+        if(e.matches){
+            conversationWrapper.firstElementChild.innerText=conversation.title.charAt(0).toUpperCase()
+            document.getElementById('create-conversation').innerText='+'
+        } else{
+            conversationWrapper.firstElementChild.innerText=conversation.title
+            document.getElementById('create-conversation').innerText='+ New Conversation'
+            
+        }
+    })
     conversationWrapper.addEventListener('click', () => {
         model.currentConversation = model.conversations.filter(item => item.id === conversation.id)[0]
         view.showCurrentConversation()
         document.querySelector('.conversation.current').classList.remove('current')
         conversationWrapper.classList.add('current')
+        view.hideNotification(conversation.id)
     })
 
     document.querySelector('.list-conversations').appendChild(conversationWrapper)
@@ -165,4 +187,20 @@ view.addUser = (users) => {
     addWrapper.classList.add('user-email')
     addWrapper.innerHTML = user
     document.querySelector('.list-user').appendChild(addWrapper)
+}
+
+view.addUserInConversation = (numberUser)=>{
+    const currentConversationElement = document.querySelector('.conversation.current .num-of-user')
+    currentConversationElement.innerText=numberUser+ ' users'
+
+}
+
+view.showNotification=(docId)=>{
+    const conversation=document.getElementById(docId)
+    conversation.querySelector('.notification').style="display: block;"
+}
+
+view.hideNotification=(docId)=>{
+    const conversation=document.getElementById(docId)
+    conversation.querySelector('.notification').style="display: none;"
 }

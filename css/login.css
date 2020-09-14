@@ -29,3 +29,9 @@
 .form-action{
     align-items: center;
 }
+
+@media screen and (max-width:576px){
+    .login-container #login-form{
+        width: 100%;
+    }
+}

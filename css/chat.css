@@ -110,6 +110,7 @@
 
 .chat-container .aside-left .list-conversations .conversation{
     padding: 10px;
+    position: relative;
 }
 
 .chat-container .list-conversations .conversation.current{
@@ -137,3 +138,57 @@
     border-right: 1px solid #dbdbdb;
 }
 
+.chat-container .notification{
+    width: 13px;
+    height: 13px;
+    background: #007cfd;
+    position: absolute;
+    border-radius: 50%;
+    top: 15px;
+    right: 12px;
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .aside-right{
+        display: none;
+    }
+     .chat-container .conversation-detail{
+         width: 85%;
+     }
+     .chat-container .num-of-user{
+        display:none;
+     }
+     .chat-container .aside-left .list-conversations .conversation{
+         width: 64px;
+         height: 64px;
+         border-radius: 50%;
+         padding: 0;
+         border: 1px solid #dbdbdb;
+         text-align: center;
+         line-height: 64px;
+         margin: auto;
+         margin-bottom: 10px;
+     }
+     .chat-container .aside-left .list-conversations .conversation:first-child{
+         margin-top: 10px;
+     }
+     .chat-container .notification{
+        top: 22px;
+        right: 0;
+    }
+
+}
+@media screen and(max-width:576px){
+    .chat-container .aside-left .list-conversations .conversation{
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
+    .chat-container .notification{
+        width: 12px;
+        height: 12px;
+        top: 13px;
+        right: 0;
+    }
+}
