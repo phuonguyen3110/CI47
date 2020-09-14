@@ -161,6 +161,7 @@ view.addConversation = (conversation) => {
         conversationWrapper.firstElementChild.innerText=conversation.title.charAt(0).toUpperCase()
         document.getElementById('create-conversation').innerText='+'
     }
+
     mediaQuery.addListener((e)=>{
         if(e.matches){
             conversationWrapper.firstElementChild.innerText=conversation.title.charAt(0).toUpperCase()
@@ -168,7 +169,7 @@ view.addConversation = (conversation) => {
         } else{
             conversationWrapper.firstElementChild.innerText=conversation.title
             document.getElementById('create-conversation').innerText='+ New Conversation'
-            
+
         }
     })
     conversationWrapper.addEventListener('click', () => {
